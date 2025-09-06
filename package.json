@@ -13,14 +13,15 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "src/index.js",
+  "main": "bin/gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "commander": "^5.1.0"
+    "commander": "^5.1.0",
+    "lodash": "^4.17.21"
   },
-  "bin" : {
+  "bin": {
     "gendiff": "bin/gendiff.js"
   }
 }
