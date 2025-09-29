@@ -1,4 +1,4 @@
-import _ from 'lodash' // Импорт Lodash
+// import _ from 'lodash' // Импорт Lodash
 
 export default function diff(obj1, obj2) {
   const diff = {}
@@ -23,6 +23,6 @@ export default function diff(obj1, obj2) {
       diff[`+ ${key}`] = value
     }
   }
-  console.log(diff)
+  
   return diff
 }
