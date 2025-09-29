@@ -1,28 +1,28 @@
-// import _ from 'lodash' // Импорт Lodash
+// import _ from 'lodash' 
 
 export default function diff(obj1, obj2) {
   const diff = {}
 
-  for (const [key, value] of Object.entries(obj1)) {
+  for (const [key, value1] of Object.entries(obj1)) {
     if (Object.hasOwn(obj2, key)) {
-      if (obj2[key] === value) {
-        diff[key] = value
+      if (obj2[key] === value1) {
+        diff[key] = value1
       }
       else {
-        diff[`+ ${key}`] = value
-        diff[`- ${key}`] = value
+        diff[`- ${key}`] = value1
+        diff[`+ ${key}`] = obj2[key]
       }
     }
     else {
-      diff[`- ${key}`] = value
+      diff[`- ${key}`] = value1
     }
   }
 
-  for (const [key, value] of Object.entries(obj2)) {
+  for (const [key, value2] of Object.entries(obj2)) {
     if (!(Object.hasOwn(obj1, key))) {
-      diff[`+ ${key}`] = value
+      diff[`+ ${key}`] = value2
     }
   }
   
-  return diff
+  return JSON.stringify(diff)
 }
