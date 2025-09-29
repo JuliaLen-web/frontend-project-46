@@ -21,11 +21,22 @@ beforeAll(() => {
     file2Obj = fs.readFileSync(getFixturePath('file2.json'), 'utf-8')
 })
 
-test('diff', () => {
-    console.log(JSON.parse(expected))
-    console.log(JSON.parse(diff( JSON.parse(file1Obj), JSON.parse(file2Obj))))
-    
-    let formmatedExpect = JSON.parse(expected);
+test('diff object type', () => {
+    let formmatedExpect = JSON.parse(expected)
     let formmatedDiff = JSON.parse(diff( JSON.parse(file1Obj), JSON.parse(file2Obj)))
+
+    // console.log(formmatedExpect)
+    // console.log(formmatedDiff)
+
+    expect(formmatedDiff).toEqual(formmatedExpect)
+})
+
+test('diff string type', () => {
+    let formmatedExpect = JSON.stringify(JSON.parse(expected))
+    let formmatedDiff = diff( JSON.parse(file1Obj), JSON.parse(file2Obj))
+
+    // console.log(formmatedExpect)
+    // console.log(formmatedDiff)
+
     expect(formmatedDiff).toEqual(formmatedExpect)
 })

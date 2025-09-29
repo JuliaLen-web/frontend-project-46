@@ -22,16 +22,37 @@
 
 Диф строится на основе того, как файлы изменились относительно друг друга, ключи выводятся в алфавитном порядке. Ниже пример того, что должно получиться по результату данного шага:
 
-result.json
+file1.json -->
 
 ```
 {
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
+    "host": "hexlet.io",
+    "timeout": 50,
+    "proxy": "123.234.53.22",
+    "follow": false
+}
+
+```
+file2.json -->
+
+```
+{
+    "timeout": 20,
+    "verbose": true,
+    "host": "hexlet.io"
+}
+
+```
+result.json -->
+
+```
+{
+    "host": "hexlet.io",
+    "- timeout": 50,
+    "+ timeout": 20,
+    "- proxy": "123.234.53.22",
+    "- follow": false,
+    "+ verbose": true
 }
 
 ```
