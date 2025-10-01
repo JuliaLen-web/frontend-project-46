@@ -21,7 +21,7 @@ test('stylish format', () => {
 
 test('plain format', () => {
   const resultPlain = readFile('resultPlain.txt')
-  expect(genDiff(json, yml, 'plain')).toEqual(resultPlain.trim())
+  expect(genDiff(json, yml, 'plain')).toEqual(resultPlain)
 })
 
 test('JSON format', () => {
