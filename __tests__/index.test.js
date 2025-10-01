@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const getFixturePath = name => path.join(__dirname, '..', '__fixtures__', name)
-const readFile = filename => fs.readFileSync(getFixturePath(filename), 'utf-8')
+const readFile = filename => fs.readFileSync(getFixturePath(filename), 'utf-8').trim()
 
 const json = getFixturePath('file1.json')
 const yml = getFixturePath('file2.yml')
