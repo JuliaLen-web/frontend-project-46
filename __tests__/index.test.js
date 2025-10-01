@@ -1,62 +1,30 @@
-import diff from '../src/diff.js'
+import genDiff from '../index.js'
 import { fileURLToPath } from 'url'
+import { test, expect } from '@jest/globals'
 import fs from 'fs'
 import path from 'path'
-import yaml from 'js-yaml'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const getFixturePath = name => path.join(__dirname, '..', '__fixtures__', name)
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8')
 
-describe('diff json files', () => {
-    let expected
-    let file1Obj
-    let file2Obj
+const json = getFixturePath('file1.json')
+const yml = getFixturePath('file2.yml')
 
-    beforeAll(() => {
-        expected = fs.readFileSync(getFixturePath('result.json'), 'utf-8')
-        file1Obj = fs.readFileSync(getFixturePath('file1.json'), 'utf-8')
-        file2Obj = fs.readFileSync(getFixturePath('file2.json'), 'utf-8')
-    })
-
-    test('diff object type', () => {
-        let formmatedExpect = JSON.parse(expected)
-        let formmatedDiff = JSON.parse(diff( JSON.parse(file1Obj), JSON.parse(file2Obj)))
-
-        expect(formmatedDiff).toEqual(formmatedExpect)
-    })
-
-    test('diff string type', () => {
-        let formmatedExpect = JSON.stringify(JSON.parse(expected))
-        let formmatedDiff = diff( JSON.parse(file1Obj), JSON.parse(file2Obj))
-
-        expect(formmatedDiff).toEqual(formmatedExpect)
-    })
+test('stylish format', () => {
+  const resultStylish = readFile('resultStylish.txt')
+  expect(genDiff(json, yml)).toEqual(resultStylish)
+  expect(genDiff(json, yml, 'stylish')).toEqual(resultStylish.trim())
 })
 
-describe('diff yml files', () => {
-    let expected
-    let file1Obj
-    let file2Obj
+test('plain format', () => {
+  const resultPlain = readFile('resultPlain.txt')
+  expect(genDiff(json, yml, 'plain')).toEqual(resultPlain.trim())
+})
 
-    beforeAll(() => {
-        expected = fs.readFileSync(getFixturePath('result.json'), 'utf-8')
-        file1Obj = fs.readFileSync(getFixturePath('file1.yml'), 'utf-8')
-        file2Obj = fs.readFileSync(getFixturePath('file2.yml'), 'utf-8')
-    })
-
-    test('diff object type', () => {
-        let formmatedExpect = JSON.parse(expected)
-        let formmatedDiff = JSON.parse(diff( yaml.load(file1Obj), yaml.load(file2Obj)))
-
-        expect(formmatedDiff).toEqual(formmatedExpect)
-    })
-
-    test('diff string type', () => {
-        let formmatedExpect = JSON.stringify(JSON.parse(expected))
-        let formmatedDiff = diff( yaml.load(file1Obj), yaml.load(file2Obj))
-
-        expect(formmatedDiff).toEqual(formmatedExpect)
-    })
+test('JSON format', () => {
+  const resultJSON = readFile('resultJSON.txt')
+  expect(genDiff(json, yml, 'json')).toEqual(resultJSON)
 })
