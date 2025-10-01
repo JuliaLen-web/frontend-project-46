@@ -63,11 +63,3 @@ result.json -->
 + Сравниваются данные, а не строки файлов
 + Две строчки дифа, отвечающие за различия поля, должны находиться рядом. Причём вначале должна выводиться строка относящаяся к первому файлу, а затем строка относящаяся ко второму файлу 
 + Результатом работы функции genDiff() является строка
-
-## Демонстрация сравнения плоских файлов:
-
-[![asciicast](https://asciinema.org/a/yDOx3T0NHvnixY9oPB6HisNf5.svg)](https://asciinema.org/a/yDOx3T0NHvnixY9oPB6HisNf5)
-
-## Демонстрация сравнения вложенных файлов:
-
-[![asciicast](https://asciinema.org/a/6z4oOVdURR20yNKYD1CADBJwE.svg)](https://asciinema.org/a/6z4oOVdURR20yNKYD1CADBJwE)
