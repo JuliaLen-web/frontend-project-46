@@ -16,12 +16,12 @@ const yml = getFixturePath('file2.yml')
 test('stylish format', () => {
   const resultStylish = readFile('resultStylish.txt')
   expect(genDiff(json, yml)).toEqual(resultStylish)
-  expect(genDiff(json, yml, 'stylish')).toEqual(resultStylish.trim())
+  expect(genDiff(json, yml, 'stylish')).toEqual(resultStylish)
 })
 
 test('plain format', () => {
   const resultPlain = readFile('resultPlain.txt')
-  expect(genDiff(json, yml, 'plain')).toEqual(resultPlain.trim())
+  expect(genDiff(json, yml, 'plain')).toEqual(resultPlain)
 })
 
 test('JSON format', () => {

@@ -18,6 +18,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@jest/globals": "^30.2.0",
     "@stylistic/eslint-plugin": "^5.4.0",
     "commander": "^5.1.0",
     "eslint-plugin-jest": "^29.0.1",
