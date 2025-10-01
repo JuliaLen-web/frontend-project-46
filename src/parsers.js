@@ -6,7 +6,8 @@ export default function (filepath) {
   const format = path.extname(filepath)
   if (format === '.yml' || format === '.yaml') {
     return yaml.load(readFileSync(filepath, 'utf-8'))
-  } else {
+  }
+  else {
     return JSON.parse(readFileSync(filepath, 'utf-8'))
   }
 }

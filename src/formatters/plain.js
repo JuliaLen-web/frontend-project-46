@@ -16,7 +16,7 @@ const formatPlain = (value, parent = '') => {
     .map((entry) => {
       switch (entry.type) {
         case 'removed':
-          return `Property '${parent}${entry.key}' was removed`;
+          return `Property '${parent}${entry.key}' was removed`
         case 'added':
           return `Property '${parent}${entry.key}' was added with value: ${formatValue(
             entry.value,
