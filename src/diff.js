@@ -5,13 +5,13 @@ export default function diff(data1, data2) {
   const sortedKeys = _.sortBy(keys)
   return sortedKeys.map((key) => {
     if (!Object.hasOwn(data2, key)) {
-      return {key, type: 'removed', value: data1[key]}
+      return { key, type: 'removed', value: data1[key] }
     }
     if (!Object.hasOwn(data1, key)) {
-      return {key, type: 'added', value: data2[key]}
+      return { key, type: 'added', value: data2[key] }
     }
     if (_.isObject(data1[key]) && _.isObject(data2[key])) {
-      return {key, type: 'nested', children: diff(data1[key], data2[key])}
+      return { key, type: 'nested', children: diff(data1[key], data2[key]) }
     }
     if (!_.isEqual(data1[key], data2[key])) {
       return {
@@ -21,6 +21,6 @@ export default function diff(data1, data2) {
         newValue: data2[key],
       }
     }
-    return {key, type: 'unchanged', value: data1[key]}
+    return { key, type: 'unchanged', value: data1[key] }
   })
 }

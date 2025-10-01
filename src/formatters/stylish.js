@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'lodash'
 
 const signs = {
   removed: '- ',
@@ -22,17 +22,17 @@ const stringifyValue = (value, depth) => {
     const objEntries = Object.entries(iterValue).map(([key, val]) => {
       const processedValue = process(val, iterDepth + 1)
       return `${currentIndent}${key}: ${processedValue}`
-    });
+    })
 
-    return `{\n${objEntries.join('\n')}\n${bracketIndent}}`;
+    return `{\n${objEntries.join('\n')}\n${bracketIndent}}`
   }
-  return process(value, depth);
-};
+  return process(value, depth)
+}
 
 const formatStylish = (value, depth = 1) => {
-  const indentSize = getIndent(depth);
-  const currentIndent = ' '.repeat(indentSize);
-  const bracketIndent = ' '.repeat(indentSize - 2);
+  const indentSize = getIndent(depth)
+  const currentIndent = ' '.repeat(indentSize)
+  const bracketIndent = ' '.repeat(indentSize - 2)
 
   const result = value.map((entry) => {
     switch (entry.type) {
