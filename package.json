@@ -13,7 +13,7 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "bin/gendiff.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
