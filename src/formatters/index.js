@@ -3,6 +3,7 @@ import formPlain from './plain.js'
 import formJson from './json.js'
 
 const formatData = (data, format) => {
+  console.log(data, format, ' data, format')
   switch (format) {
     case 'stylish':
       return formStylish(data)
