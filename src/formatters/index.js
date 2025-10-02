@@ -8,8 +8,10 @@ const formatData = (data, format) => {
       console.log(formStylish(data))
       return formStylish(data)
     case 'plain':
+      console.log(formPlain(data))
       return formPlain(data)
     case 'json':
+      console.log(formJson(data))
       return formJson(data)
     default:
       throw new Error(`Unknown format: '${format}'!`)
